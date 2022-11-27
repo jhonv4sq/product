@@ -5,7 +5,7 @@ import java.io.FileReader;
 
 public class txt {
 
-    protected static String binder = "src/database";
+    protected static String binder = "src/database/txt";
     protected static String fileName = "products";
 
     public static String getPath(String path){
