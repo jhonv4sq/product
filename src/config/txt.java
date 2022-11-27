@@ -2,6 +2,7 @@ package config;
 
 import java.io.*;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 public class txt {
 
@@ -26,6 +27,7 @@ public class txt {
                 }
                 if(file.createNewFile()){
                     System.out.println("Se ha creado el archivo: " + fileName);
+                    writeIndex(newFilePath, fileName);
                 }
             }
 
@@ -33,5 +35,32 @@ public class txt {
             e.printStackTrace();
         }
     }
+
+    public static void writeIndex(String path, String fileName){
+
+        FileWriter file = null;
+        String firstRow = null;
+        
+        if(fileName.equals("products")){
+            firstRow = "id, name, description, price";
+        }
+
+        try {
+            file = new FileWriter(path);
+            PrintWriter pw = new PrintWriter(file);
+            pw.print(firstRow);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(file != null){
+                    file.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+    }
+
 
 }

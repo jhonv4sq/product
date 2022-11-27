@@ -1,7 +1,7 @@
 package controller;
 
 import model.*;
-import views.products.*;
+
 
 public class ProductController extends Controller{
 
