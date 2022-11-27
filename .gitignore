@@ -1,2 +1,2 @@
 *.vscode
-*src/database
+*src/database/products
