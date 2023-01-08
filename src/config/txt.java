@@ -62,5 +62,7 @@ public class txt {
         }
     }
 
-
+    public static void read(){
+        
+    }
 }

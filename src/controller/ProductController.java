@@ -5,8 +5,8 @@ import model.*;
 
 public class ProductController extends Controller{
 
-    public void store(String name, String description, int price){
-       Product products = new Product(name, description, price);
+    public void store(String name, String description, int price, int stock){
+       Product products = new Product(name, description, price, stock);
        super.productList.add(products);
     }
 

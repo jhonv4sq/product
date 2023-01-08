@@ -5,11 +5,13 @@ public class Product {
     protected String name;
     protected String description;
     protected int price;
+    protected int stock;
 
-    public Product(String name, String description, int price){
+    public Product(String name, String description, int price, int stock){
         this.name = name;
         this.description = description;
         this.price = price;
+        this.stock = stock;
     }
 
     public String getName(){
@@ -26,7 +28,7 @@ public class Product {
 
     @Override
     public String toString(){
-        return "|name: "+name+" |description: "+description+" |price: "+price +"|";
+        return "|name: "+name+" |description: "+description+" |price: "+price +"|stock: "+stock+"|";
     }
 
 }
