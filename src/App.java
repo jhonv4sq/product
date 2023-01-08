@@ -1,6 +1,4 @@
 
-import config.txt;
-import config.txt.*;
 import views.ini;
 
 public class App {

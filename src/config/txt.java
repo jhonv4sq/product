@@ -6,15 +6,12 @@ import java.util.ArrayList;
 
 public class txt {
 
-    protected static String binder = "src/database/txt";
-    protected static String fileName = "products";
-
     public static String getPath(String path){
         File file = new File(path);
         return file.getAbsolutePath().replace("\\", "\\\\");
     }
 
-    public void createFile(){
+    public void createFile(String binder, String fileName, String firstRow){
         String pathFile = getPath(binder);
         String newFilePath = getPath(binder+"/"+fileName+".txt");
 
@@ -23,11 +20,11 @@ public class txt {
             File file = new File(newFilePath);
             if(!path.exists() || !file.exists()){
                 if(path.mkdirs()){
-                    System.out.println("Se ha creado la carpeta database");
+                    System.out.println("Se ha creado la carpeta: txt");
                 }
                 if(file.createNewFile()){
                     System.out.println("Se ha creado el archivo: " + fileName);
-                    writeIndex(newFilePath, fileName);
+                    writeIndex(newFilePath, firstRow);
                 }
             }
 
@@ -36,14 +33,8 @@ public class txt {
         }
     }
 
-    public static void writeIndex(String path, String fileName){
-
+    public static void writeIndex(String path, String firstRow){
         FileWriter file = null;
-        String firstRow = null;
-        
-        if(fileName.equals("products")){
-            firstRow = "id, name, description, price";
-        }
 
         try {
             file = new FileWriter(path);
@@ -62,7 +53,33 @@ public class txt {
         }
     }
 
-    public static void read(){
-        
+    public static ArrayList<ArrayList<String>> getDataFromTxt(String binder, String fileName){
+        ArrayList<ArrayList<String>> List = new ArrayList<ArrayList<String>>();
+        String path = getPath(binder+"/"+fileName+".txt");
+
+        try {
+            File file = new File(path);
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            
+            String line;
+            int count = 0;
+            while ((line = br.readLine()) != null) {
+                if(count != 0){
+                    List.add(new ArrayList<String>());
+                    for(String data : line.split(", ")){
+                        List.get(List.size()-1).add(data);
+                    }
+                }
+                count++;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return List;
+    }
+
+    public static void updateTxt(){
+
     }
 }

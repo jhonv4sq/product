@@ -3,7 +3,8 @@ package views;
 import java.util.Scanner;
 import controller.ProductController;
 
-import views.products.*;;
+import views.products.*;
+import config.loadTxt;
 
 public class ini {
     public ini(){
@@ -11,6 +12,8 @@ public class ini {
         Boolean exit = false;
 
         ProductController products = new ProductController();
+        loadTxt load = new loadTxt(products);
+
         products.clear();
         String options = "\n1) Agregar Nuevo \n2) Mostrar todo \n3) Salir";
         while(exit != true){
